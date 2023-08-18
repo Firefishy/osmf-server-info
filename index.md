@@ -13,7 +13,7 @@ Server | Description | System | Stats | Last Contact
 {% if node.automatic.roles contains "equinix-ams" %}
 {% assign node_name = node.name | split: '.' | first %}
 {% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system | linkify: 'systems' }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
 {% endfor %}
 {% endstrip %}
@@ -27,7 +27,7 @@ Server | Description | System | Stats | Last Contact
 {% if node.automatic.roles contains "equinix-dub" %}
 {% assign node_name = node.name | split: '.' | first %}
 {% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system | linkify: 'systems' }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
 {% endfor %}
 {% endstrip %}
@@ -41,7 +41,7 @@ Server | Description | System | Stats | Last Contact
 {% if node.automatic.roles contains "ucl" %}
 {% assign node_name = node.name | split: '.' | first %}
 {% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | {{ node_system | linkify: 'systems' }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endif %}
 {% endfor %}
 {% endstrip %}
@@ -55,7 +55,7 @@ Server | Description | Location | System | Stats | Last Contact
 {% unless node.automatic.roles contains "equinix-ams" or node.automatic.roles contains "equinix-dub" or node.automatic.roles contains "ucl" %}
 {% assign node_name = node.name | split: '.' | first %}
 {% assign node_system =  node.automatic.dmi.system.manufacturer  | append: ' ' | append: node.automatic.dmi.system.product_name | strip %}
-[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | {{ node_system }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
+[{{ node_name }}]({{ site.baseurl }}/servers/{{ node.name }}/) | {{ node.automatic.roles | server_description }} | Hosted by {{ node.default.hosted_by | linkify: 'isps' }} in {{ node.default.location }} | {{ node_system | linkify: 'systems' }} | [prometheus](https://prometheus.openstreetmap.org/d/Ea3IUVtMz/host-overview?orgId=1&var-instance={{ node_name }}) | {{ node.automatic.ohai_time | date_to_pretty }}
 {% endunless %}
 {% endfor %}
 {% endstrip %}
